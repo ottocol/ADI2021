@@ -52,10 +52,10 @@ b = "OK";   //Podemos usar variables no declaradas. Se declaran automáticamente
 - Internamente se diferencia entre tipos *primitivos* (numérico, *booleano*, cadena) y objetos (por ejemplo `Date`, `RegExp`, entre las "clases" predefinidas en JS, o los objetos que podemos definir nosotros)
 
 ```javascript
-console.log(typeof 3)          //"number"
-console.log(typeof 3.5)        //(también) "number"
-console.log(typeof "hola")     //"string"
-console.log(typeof new Date()) //"object"
+typeof 3          //"number"
+typeof 3.5        //también "number"
+typeof "hola"     //"string"
+typeof new Date() //"object"
 ```
 
 > Curiosamente, en Javascript tanto los enteros como los reales se representan en coma flotante (en C serían `double`), de ahí que 3 y 3.5 sean del mismo tipo.
@@ -133,7 +133,7 @@ false=="0" //true!!, porque "0" se convierte a 0, e igual que en C, 0 es false
 - Existe una variante del `for` que nos permite iterar por todas las propiedades de un objeto, la veremos cuando hablemos de objetos  
 - Los errores se gestionan con *excepciones* al estilo Java, con `try...catch...finally`.
 
-[https://repl.it/KxGO/3](https://repl.it/KxGO/3)
+[DEMO en repl.it](https://repl.it/KxGO/3)
 ```javascript
 try {
   var a = 4;
@@ -319,13 +319,15 @@ var persona = {
 ### Prototipos
 
 - Javascript es prácticamente el único lenguaje *mainstream* orientado a objetos que **originalmente no incluía la idea de clase ni de herencia basada en clases**, sino basada en **prototipos**
-
 - Cuando creamos un objeto podemos especificar cuál queremos que sea su *prototipo*. Si el objeto no tiene una propiedad, se buscará en el prototipo
+- Si la propiedad sigue sin encontrarse en el prototipo, se irá al prototipo del prototipo, y así sucesivamente hasta llegar a `Object.prototype`.
+- Podemos ver esto como **una forma de herencia en la que un objeto concreto hereda de otro**, en lugar de una clase de otra.
 
-[https://repl.it/@ottocol/SuddenCorruptObjectcode](https://repl.it/@ottocol/SuddenCorruptObjectcode)
+
+[DEMO en repl.it](https://repl.it/@ottocol/SuddenCorruptObjectcode)
 ```javascript
 var original = {
-  valor: 1,
+  nombre: "original",
   saludar: function() {
     return "hola, qué tal";
   }
@@ -333,26 +335,22 @@ var original = {
 
 //El prototipo de "descendiente" es "original"
 var descendiente = Object.create(original);
-console.log(descendiente.valor) //1
-console.log(descendiente.hasOwnProperty("valor")) //nos dice que la propiedad no está directamente en descendiente
+console.log(descendiente.nombre) //"original"
+console.log(descendiente.hasOwnProperty("nombre")) //nos dice que la propiedad no está directamente en descendiente
 console.log(descendiente.saludar()) //"hola, qué tal"
-original.valor = 0
-console.log(descendiente.valor) //0, el valor se comparte!!
-descendiente.valor = 1  //Aquí estamos creando una propiedad nueva en descendiente
-console.log(original.valor) //por eso esta no cambia
-console.log(descendiente.hasOwnProperty("valor")) //Ahora será true```
+original.nombre = "original_2"
+console.log(descendiente.nombre) //el mismo, el valor se comparte!!
+descendiente.nombre = "descendiente"  //propiedad nueva en descendiente
+console.log(descendiente.hasOwnProperty("nombre")) //Ahora será true
 ```
-
-- Si un objeto no tiene una propiedad, se buscará en su prototipo. Si sigue sin encontrarse, se irá al prototipo del prototipo, y así sucesivamente hasta llegar a `Object.prototype`.
-- Podemos ver esto como **una forma de herencia en la que un objeto concreto hereda de otro**, en lugar de una clase de otra.
 
 ### Clases
 
 - La herencia orientada a prototipos es ajena a la experiencia del 99% de los desarrolladores, acostumbrados a la herencia basada en clases de lenguajes como Java o C++. Tanto es así que en Javascript han surgido multitud de patrones de código e incluso librerías para poder definir y usar clases. 
-- Sin acudir a librerías externas, la forma más habitual de definir una clase en versiones anteriores a ES2015 consiste en definir una función con el nombre de la clase, usarla como constructor, y asignarle propiedades al prototipo de esta función. Podéis ver un ejemplo [aquí](https://leanpub.com/understandinges6/read#leanpub-auto-class-like-structures-in-ecmascript-5) de este patrón, usado en multitud de sitios.
-- Finalmente en ES2015 se han añadido clases, con una sintaxis similar a otros lenguajes. 
+- Sin acudir a librerías externas, **la forma más habitual de definir una clase en versiones anteriores a ES2015** consiste en definir una función con el nombre de la clase, usarla como constructor, y asignarle propiedades al prototipo de esta función. Podéis ver un ejemplo [aquí](https://leanpub.com/understandinges6/read#leanpub-auto-class-like-structures-in-ecmascript-5) de este patrón, usado en multitud de sitios.
+- Finalmente en ES2015 se añadieron clases al lenguaje, con una sintaxis similar a la de otros lenguajes más clásicos. 
 
-[https://repl.it/KxLq/0](https://repl.it/KxLq/0)
+[DEMO en repl.it](https://repl.it/KxLq/0)
 ```javascript
 class Persona {
     constructor(nombre) {
@@ -383,12 +381,13 @@ A destacar del código anterior:
 * Los constructores se definen con la palabra clave `constructor`
 * A diferencia de la notación literal no es necesario separar los nombres de los métodos por comas
 * Podemos definir métodos que actúen de *getters* y *setters* con las palabras clave `get`y `set`. En el ejemplo, al acceder a/cambiar el valor de la propiedad `miNombre` en realidad estamos llamando al *getter* y al *setter*, respectivamente.
+* A diferencia de lenguajes como C++/Java, no hay modificadores de acceso (`public`, `private`,...)
 
 > NOTA: A pesar de las clases, Javascript sigue usando internamente herencia basada en prototipos. Es decir, las clases son "azúcar sintáctico".
 
 Para crear una clase que herede de otra la definimos con `extends`
 
-[https://repl.it/KxLq/1](https://repl.it/KxLq/1)
+[DEMO en repl.it](https://repl.it/KxLq/1)
 ```javascript
 class StarWarsFan extends Persona {
     constructor(nombre) {
