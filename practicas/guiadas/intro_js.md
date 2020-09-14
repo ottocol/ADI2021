@@ -381,7 +381,7 @@ A destacar del código anterior:
 * Los constructores se definen con la palabra clave `constructor`
 * A diferencia de la notación literal no es necesario separar los nombres de los métodos por comas
 * Podemos definir métodos que actúen de *getters* y *setters* con las palabras clave `get`y `set`. En el ejemplo, al acceder a/cambiar el valor de la propiedad `miNombre` en realidad estamos llamando al *getter* y al *setter*, respectivamente.
-* A diferencia de lenguajes como C++/Java, no hay modificadores de acceso (`public`, `private`,...)
+* A diferencia de lenguajes como C++/Java, no hay modificadores de acceso (`public`, `private,...)
 
 > NOTA: A pesar de las clases, Javascript sigue usando internamente herencia basada en prototipos. Es decir, las clases son "azúcar sintáctico".
 
