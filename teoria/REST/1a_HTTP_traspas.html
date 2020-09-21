@@ -23,6 +23,7 @@
 		<script src="../../reveal.js-4.0.2/dist/reveal.js"></script>
 		<script src="../../reveal.js-4.0.2/plugin/markdown/markdown.js"></script>
 		<script src="../../reveal.js-4.0.2/plugin/highlight/highlight.js"></script>
+		<script src="../../reveal.js-4.0.2/plugin/zoom/zoom.js"></script>
 
 		<script>
 			// More info about config & dependencies:
@@ -30,8 +31,9 @@
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
 				history: true,
+				zoomLevel: 1.5,
 				plugins: [
-					RevealMarkdown, RevealHighlight
+					RevealMarkdown, RevealHighlight, RevealZoom
 				]
 			});
 			Reveal.configure({ 
