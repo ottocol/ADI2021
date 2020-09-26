@@ -622,8 +622,7 @@ https://api.flickr.com/services?format=XML...
 
 Imitar el funcionamiento de la web, en la que para seguir los pasos en un flujo de trabajo vamos saltando entre enlaces, sin necesidad de conocer previamente las URL
 
-<!-- .element: class="stretch" -->
-![](img_1c/amazon.png)
+![](img_1c/amazon.png)<!-- .element: class="r-stretch" -->
 
 ---
 
@@ -657,8 +656,7 @@ Imitar el funcionamiento de la web, en la que para seguir los pasos en un flujo 
 
 La idea de HATEOAS es que al final el API es como una máquina de estados y pasamos de un estado a otro haciendo peticiones
 
-![](https://eamodeorubio.files.wordpress.com/2012/09/order_state_machine.png)
-<!-- .element: class="stretch" -->
+![](https://eamodeorubio.files.wordpress.com/2012/09/order_state_machine.png) <!-- .element: class="r-stretch" -->
 
 ---
 
