@@ -72,7 +72,7 @@ Para poder puntuar estos requisitos es necesario haber implementado correctament
 
 ## Plazo de entrega
 
-El plazo de entrega de la práctica concluye el **lunes día 19 de octubre a las 23:55**. La entrega se realizará en moodle enviando un único archivo comprimido en .zip o similar. 
+El plazo de entrega de la práctica concluye el **lunes día 26 de octubre a las 23:55**. La entrega se realizará en moodle enviando un único archivo comprimido en .zip o similar. 
 
 Resumiendo, la calificación será:
 
