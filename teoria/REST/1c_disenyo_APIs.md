@@ -38,23 +38,32 @@ Tiene su origen en [la tesis](www.ics.uci.edu/~fielding/pubs/dissertation/top.ht
 *   Capas (proxys de modo transparente)
 *   Código "bajo demanda" (opcional)
 
-![](img_1c/roy_fielding.png)
-<!-- .element: class="right_vertical_center" -->
+![](img_1c/roy_fielding.png) <!-- .element: class="right_vertical_center" -->
 
 ---
 
-## Resumen de REST bajo HTTP
+## Resumen "informal" de REST bajo HTTP
 
 Las **llamadas al API** se implementan como **peticiones HTTP**, en las que:
 
-*   La **URL** representa el *recurso*. Cada URL a la que podemos hacer llamadas es lo que se conoce como un *endpoint* del API
+*   La **URL** representa el recurso: cada URL a la que podemos hacer peticiones se conoce como un *endpoint* del API
 *   El **método HTTP** representa la *operación*
 *   El **código de estado HTTP** representa el *resultado*
 *   Como **formato de intercambio de datos** usaremos algún estándar ampliamente difundido (normalmente JSON por legibilidad y facilidad de manejo desde Javascript)
 
 ---
 
-## Leer recurso: la URL
+Vamos a ver ahora todos los detalles posibles sobre las 4 operaciones básicas:
+
+- Leer un recurso o colección de recursos
+- Crear un nuevo recurso
+- Modificar un recurso
+- Eliminar un recurso
+
+
+---
+
+## Leer recurso: URL de colección vs. individual
 
 - Habitualmente **todos los recursos de un tipo** se representan con una URL con el nombre del tipo en plural
 
@@ -111,7 +120,8 @@ Content-Type:application/json
 Típicamente la URL es la de la colección de recursos, ya que el nuevo recurso todavía no tiene un `id` (normalmente lo asigna el servidor)
 
 ```bash
-# poniendo "user" referenciamos al usuario autentificado en la llamada al API
+# repos del usuario autentificado en la llamada al API
+# ya veremos en su momento dónde está la info del usuario autentificado
 https://api.github.com/user/repos
 ```
 
@@ -137,7 +147,6 @@ Podéis probarlo en [https://repl.it/repls/CanineVelvetyGreyware](https://repl.i
 ## Crear recurso: respuesta
 
 - **Estados** posibles: **201** (Recurso creado correctamente), **401** (sin autentificar o credenciales incorrectas), **403** (no tienes permiso para esta operación) **400** (petición incorrecta, p.ej. falta un campo o su valor no es válido), **500** (Error del servidor, p.ej. se ha caído la BD)
-
 - En caso de **201** Lo más RESTful es **devolver la URL del recurso creado** en la cabecera HTTP `Location` de la respuesta
 
 ```http
