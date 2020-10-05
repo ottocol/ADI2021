@@ -70,7 +70,7 @@ app.post('/usuarios/check', function(pet, resp) {
      resp.status(200)
      resp.send("Usuario OK")
   else
-     resp.status(403)
+     resp.status(401)
      resp.send("Usuario y/o contraseña erróneos")
 })
 ```
@@ -92,7 +92,7 @@ app.post('/usuarios/check', function(pet, resp) {
         resp.send("Usuario OK")
       }
       else {
-        resp.status(403)
+        resp.status(401)
         resp.send("Usuario y/o contraseña incorrectos")
       }  
     })
@@ -126,7 +126,7 @@ app.post('/usuarios/check', function(pet, resp) {
       resp.send("usuario OK")
     },
     function() {
-      resp.status(403)
+      resp.status(401)
       resp.send("Usuario y/o contraseña incorrectos")
     })
 })
