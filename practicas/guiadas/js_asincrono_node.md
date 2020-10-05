@@ -308,15 +308,30 @@ Nos permite escribir código asíncrono como si fuera secuencial.
 Si ponemos `await` delante de una función que devuelva una promesa nos esperaremos a que se resuelva o rechace. Cuidado, `await` solo puede usarse dentro de funciones marcadas como `async`.
  
 ```javascript
-//online en https://repl.it/@ottocol/async-await-cn
 const fetch = require('node-fetch')
 
-async function mostrarChisteDeChuckNorris() {
-  var resp = await fetch("https://api.icndb.com/jokes/random")
-  var json = await resp.json()
-  var texto = json.value.joke
-  console.log(texto)
-}
-
-mostrarChisteDeChuckNorris()
+app.post('/api/v1/usuarios', async function(pet, resp){
+   nuevoUsuario = pet.body
+   //en un caso real por supuesto antes habría que validar los datos
+   try {
+     var result_knex = await knex('usuarios').insert(nuevoUsuario)
+     var resp_sendgrid = await fetch('https://api.sendgrid.com/v3/mail/send', {
+              method:'post',
+              body: JSON.stringify(mensaje),
+              headers: { 'Content-Type': 'application/json' },
+          })    
+     if (resp_sendgrid.ok) {
+        resp.status(200)
+        resp.send("Usuario creado OK")
+     }
+     else {
+        resp.status(500)
+        resp.send("Usuario OK, pero sin mensaje de confirmación")
+     } 
+   }  
+   catch(e) {
+      resp.status(500)
+      resp.send("Error al insertar usuario en la BD")
+   }
+})         
 ```
