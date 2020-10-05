@@ -74,7 +74,7 @@ app.post('/usuarios/check', function(pet, resp) {
      resp.send("Usuario y/o contraseña erróneos")
 })
 ```
-> ¿Por qué crees que este código no funciona?. Pistas: ¿dónde están los `return` de `chequeaCredenciales`, son de verdad de esta función? ¿Qué crees que se ejecutará antes, el mensaje de "fin de chequeo" o el código que devuelve true/false?.
+> ¿Por qué crees que este código no funciona?. Pistas sobre los problemas: 1) ¿dónde están los `return` de `chequeaCredenciales`, son de verdad de esta función? 2) ¿Qué crees que se ejecutará antes, el mensaje de "fin de chequeo" o el código que devuelve true/false?.
 
 El problema es que el código asíncrono es totalmente distinto al código secuencial al que estamos acostumbrados. Con él nos tenemos que olvidar de la idea de "llamo a una función y obtengo el valor que habrá devuelto con `return`".
 
@@ -245,18 +245,23 @@ app.post('/api/v1/usuarios', function(pet, resp){
    knex('usuarios').insert(nuevoUsuario)
      .then(function(result){
         //Le enviamos al usuario un email de confirmación usando un servicio externo
-        //Falta rellenar el cuerpo del mensaje con los datos
-        //mensaje=...
+        //Para que funcionara de verdad falta rellenar el cuerpo del mensaje con los datos
+        ///https://sendgrid.com/docs/API_Reference/Web_API_v3/Mail/index.html
         return fetch('https://api.sendgrid.com/v3/mail/send', {
             method:'post',
             body: JSON.stringify(mensaje),
             headers: { 'Content-Type': 'application/json' },
         
         })            
-    }).then(function(respuesta) {
-        return respuesta.json()
-    }).then(function(respuesta_en_json){
-        console.log(respuesta_en_json)
+    }).then(function(resp_sendgrid) {
+        if (resp_sendgrid.ok) { // res.status >= 200 && res.status < 300
+          return resp_sendgrid;
+        } else {
+          throw Error(res.statusText);
+        }
+    }).then(function(resp_sendgrid){
+        resp.status(200)
+        resp.send("Usuario creado correctamente")
     }).catch(function(error){
         console.log(error)
     })
