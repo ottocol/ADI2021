@@ -1,7 +1,5 @@
 # Normas trabajos en grupo 20-21
 
-Created: Oct 2, 2020 10:58 PM
-Updated: Oct 7, 2020 1:49 PM
 
 # Trabajos en grupo
 
