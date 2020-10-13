@@ -85,6 +85,18 @@ Forma "clásica": con el atributo `src` en un `<script>` vacío conseguimos una 
 - Típicamente cada `<script src="">` define una o más variables globales con el API.
 - Cuantas más dependencias externas tenemos, esta forma se vuelve más tediosa (por la cantidad de `script src`) y problemática (por tener que gestionar manualmente el orden de las dependencias, si hay relaciones entre ellas)
 
+
+---
+
+Por defecto al encontrar un *script* se interrumpe la carga del HTML hasta que se acabe de cargar,_parsear_ y ejecutar el *script*. Por ello típicamente __se recomendaba colocar los scripts al final__, así el usuario no ve una página en blanco. 
+
+Con *scripts* externos podemos usar los atributos `defer` o `async` 
+
+[https://www.growingwiththeweb.com/2014/02/async-vs-defer-attributes.html](https://www.growingwiththeweb.com/2014/02/async-vs-defer-attributes.html)
+<!-- .element class="caption"-->
+
+![](images_intro/async_vs_defer.png)
+
 ---
 
 ## Acceso a los APIs nativos del navegador
@@ -95,16 +107,7 @@ Forma "clásica": con el atributo `src` en un `<script>` vacío conseguimos una 
   + `document`: la página actual
   + `navigator`: el navegador
 
----
 
-Por defecto al encontrar un *script* se interrumpe la carga del HTML hasta que se acabe de cargar,*parsear* y ejecutar el *script*. Por ello típicamente se recomendaba *colocar los scripts al final*, así el usuario no ve una página en blanco. 
-
-Con *scripts* externos podemos usar los atributos `defer` o `async` 
-
-[https://www.growingwiththeweb.com/2014/02/async-vs-defer-attributes.html](https://www.growingwiththeweb.com/2014/02/async-vs-defer-attributes.html)
-<!-- .element class="caption"-->
-
-![](images_intro/async_vs_defer.png)
 
 ---
 
@@ -281,9 +284,9 @@ document.addEventListener('click', function(e){
 ---
 
 
-## *Event handlers*
+## Event handlers
 
-Forma *legacy* de definir *listeners*.  Además de la sintaxis la diferencia más importante es que **solo puede haber un *handler*** para un evento y un elemento HTML dados
+Forma *legacy* de definir *listeners*.  Además de la sintaxis, la diferencia principal es que __solo puede haber un handler__ para un evento y un elemento HTML dados
 
 Los *handler* tienen como nombre 'onXXX', donde 'XXX' es el nombre del evento: 'onclick', 'onmouseover', 'onload',...
 
@@ -375,13 +378,12 @@ var noticias = document.getElementById("noticias")
 //Ejemplo: reducir el tamaño de todas las imágenes a la mitad
 //getElementsByTagName devuelve un array
 var imags = document.getElementsByTagName("img"); 
-for(var i=0; i<imags.length; i++) {
-      //por cada atributo HTML hay una propiedad equivalente
+for(var i=0; i&lt;imags.length; i++){
+      //por cada atributo HTML hay una propiedad JS equivalente
       imags[i].width /= 2;
       imags[i].height /= 2;
 }
 ```
-
 
 ---
 
