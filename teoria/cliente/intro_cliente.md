@@ -411,19 +411,9 @@ var filasPares = document. querySelectorAll("tr:nth-child(2n)")
 
 ---
 
-## Relaciones "familiares" entre nodos
+## "Datos básicos" de un nodo
 
-Una vez accedemos a un nodo podemos acceder a su "padre", "hijos" o "hermanos" con una serie de propiedades:
-
-- Padre: `parentNode`
-- Hijos 
-  -  Solo los *tags*: array `children`. Primero=>`firstElementChild`, último=> `lastElementChild` 
-  -  Todos: array `childNodes`. Primero=>`firstChild`, Último=>`lastChild` 
-- Hermanos:
-  - Solo los *tags*: siguiente `nextElementSibling`, anterior `previousElementSibling`
-  - Todos: `nextSibling`, `previousSibling`
-
-Y en un nodo tenemos su nombre (`nodeName`) y su valor (`nodeValue`)
+En un nodo tenemos su nombre (`nodeName`) y su valor (`nodeValue`)
 
 - Para las etiquetas, el nombre es la etiqueta en mayúsculas y sin `< >` y el valor `null`
 - Para los nodos de texto, el nombre siempre es `#text` y el valor su contenido
@@ -431,10 +421,23 @@ Y en un nodo tenemos su nombre (`nodeName`) y su valor (`nodeValue`)
 
 ---
 
-## Modificar/crear nodos
+## Relaciones "familiares" entre nodos
 
-La idea de modificar los nodos o crear otros nuevos para que cambie el HTML es muy **potente**, pero el API es **tedioso** de utilizar
+Una vez accedemos a un nodo podemos acceder a su "padre", "hijos" o "hermanos" con una serie de propiedades:
 
+- Padre: `parentNode`
+- Hijos 
+  -  Solo los *tags*: array `children`. Primero=>`firstElementChild`, último=> `lastElementChild` 
+  -  Todos (incl. *whitespace nodes*): array `childNodes`. Primero=>`firstChild`, Último=>`lastChild` 
+- Hermanos:
+  - Solo los *tags*: siguiente `nextElementSibling`, anterior `previousElementSibling`
+  - Todos (incl. *whitespace nodes*): `nextSibling`, `previousSibling`
+
+---
+
+## Añadir/eliminar/crear nodos
+
+La idea de poder añadir/eliminar/crear nodos para que cambie el HTML es muy **potente**, pero el API es **tedioso** de utilizar
 
 ```javascript
 <input type="button" value="Añadir párrafo" id="boton"/>
@@ -458,9 +461,9 @@ La idea de modificar los nodos o crear otros nuevos para que cambie el HTML es m
 
 ## Manipular directamente el HTML
 
-Insertar/eliminar directamente una **cadena HTML** en determinado punto. Aun así, "por debajo" se están modificando los nodos
+Insertar/eliminar directamente una **cadena HTML** en determinado punto (internamente se siguen añadiendo/eliminando nodos como antes, pero ahora es automático) 
 
-`innerHTML`:  propiedad de lectura/escritura que refleja el HTML dentro de una etiqueta. Estandarizado en HTML5.
+`innerHTML`:  propiedad de lectura/escritura que refleja el HTML dentro de una etiqueta.
 
 ```javascript
 <input type="button" value="Pon texto" id="boton"/>
