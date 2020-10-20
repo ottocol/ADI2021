@@ -16,8 +16,8 @@
 ## Versiones de JS en el navegador
 
 
-- Los navegadores actuales implementan [**casi en su totalidad**](http://kangax.github.io/compat-table/es6/) la versión 6 de JS (también llamada **ES6**, o ES2015)
-- No obstante **hay funcionalidades importantes todavía no soportadas en algunos navegadores**, y además los nuevos estándares (ES2016, ES2017, ...) siempre "van más rápido" que las implementaciones
+- Los navegadores actuales implementan [**en su totalidad**](http://kangax.github.io/compat-table/es6/) la versión 6 de JS (también llamada **ES6**, o ES2015)
+- No obstante los nuevos estándares (ES2016, ES2017, ...) siempre "van más rápido" que las implementaciones
 
 
 ---
