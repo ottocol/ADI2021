@@ -216,7 +216,7 @@ Por ejemplo, el Javascript de una página de `www.vuestrositio.com` en principio
 
 ## CORS 
 
-*(Cross Origin Resource Sharing)*: permite saltarse la *same origin policy* con la colaboración del servidor
+*(Cross Origin Resource Sharing)* : permite saltarse la *same origin policy* con la colaboración del servidor
 
 - En cada petición *cross-domain* el navegador envía una cabecera `Origin` con el origen de la petición. Es imposible falsearla desde JS 
 - El servidor puede enviar una cabecera `Access-Control-Allow-Origin` indicando los orígenes desde los que se puede acceder a la respuesta. Si encajan con el origen de la petición el navegador dará “luz verde” 
@@ -278,17 +278,15 @@ Aclaración: CORS **no es un mecanismo de protección del servidor**. Nada nos i
 
 ## API Local Storage
 
-- Objeto global `localStorage` donde podemos almacenar pares "clave/valor" que no se pierden aunque se cierre el navegador
+- Objeto global `localStorage` donde podemos almacenar **pares "clave/valor"** que no se pierden aunque se cierre el navegador
 - Podemos almacenar un dato bajo una clave, recuperarlo conociendo la clave o iterar por todas las claves y valores
 
 ```javascript
 localStorage.login = "pepe"
 ```
-
-- El valor es siempre una cadena, para otro tipo de datos hay que hacer la conversión manualmente
+- El valor es siempre una **cadena**, para otro tipo de datos hay que hacer la conversión manualmente
     + Aunque ya hemos visto que la conversión objeto<->cadena es sencilla gracias a `JSON.stringify` y `JSON.parse`
-
-- El ámbito es el sitio web actual. Hay otro objeto `sessionStorage` que reduce más este ámbito, a la "pestaña" actual del navegador
+- El **ámbito** es el sitio web actual. Hay otro objeto `sessionStorage` que reduce más este ámbito, a la "pestaña" actual del navegador
 
 ---
 
@@ -312,7 +310,7 @@ function mostrarNombre() {
 }
 function mostrarTodosLosDatos() {
   datos=""
-  for(var i=0; i<localStorage.length; i++) {
+  for(var i=0; i&lt;localStorage.length; i++) {
      clave = localStorage.key(i)
      datos = datos + clave + "=" + localStorage[clave] + '\n'   
   }
