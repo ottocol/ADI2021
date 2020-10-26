@@ -181,7 +181,7 @@ El formulario no tiene `action` y el botón no es `submit`
 <form>
   <input type="text" id="login"/>
   <input type="password" id="password"/>
-  <button id="boton">Entrar</button>
+  <button id="boton">Dar de alta</button>
 </form>
 ```
 El JS lanza un `fetch` cuando se pulsa el botón
