@@ -175,16 +175,15 @@ En **aplicaciones con AJAX** y formularios el código JS es el que debe recolect
 
 ---
 
-El formulario no tiene `action` y el botón no es `submit`
+El botón no es `submit`
 
 ```html
-<form>
-  <input type="text" id="login"/>
-  <input type="password" id="password"/>
-  <button id="boton">Dar de alta</button>
-</form>
+<input type="text" id="login"/>
+<input type="password" id="password"/>
+<button id="boton">Dar de alta</button>
 ```
 El JS lanza un `fetch` cuando se pulsa el botón
+
 ```javascript
 document.getElementById('boton').addEventListener('click', function(){
   var datos = {
