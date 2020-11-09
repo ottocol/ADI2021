@@ -27,6 +27,16 @@ Debéis desarrollar una web en la que como mínimo se pueda hacer:
 
 > Pongo "items" como término genérico porque cada uno estáis haciendo una aplicación distinta, en vuestro caso concreto serán "productos" o "usuarios" o "películas" o lo que proceda.
 
+### Cómo implementar login/logout
+
+Aunque en un API REST "puro" no existe formalmente la idea de "hacer login/hacer *logout*", para el usuario de la web es útil que existan las operaciones de *login* y el *logout*. De lo contrario tendría que estar introduciendo continuamente *login* y *password*. Debes implementar las siguientes funcionalidades:
+
+- En algún sitio debes mostrar un formulario para hacer *login*.  
+- Una vez comprobado que *login* y *password* son correctos, y obtenido el *token* se guardará este último en el *local storage*
+- Cada vez que se haga una petición al servidor con Javascript para una operación restringida enviaréis el *token* en la cabecera `Authorization`
+- La operación de *logout* simplemente borrará el *token* del *local storage*. 
+- Una vez hecho el login con éxito se debería mostrar en algún sitio de la página el login del usuario o algún mensaje que le indique que ya está logueado y un botón/enlace para hacer *logout*. Cuando se hace el logout con éxito se debería mostrar el formulario de login.
+
 ## Requisitos adicionales
 
 Además de los 6 puntos de los requisitos mínimos, elegir de entre los siguientes:
