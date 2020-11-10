@@ -110,7 +110,7 @@ Por desgracia, el *event bus* rompe la idea de *flujo unidireccional*.
 
 <!-- .slide: class="titulo" -->
 
-## 2. El patrón *Store*
+## 2. Estado centralizado. El patrón *Store*
 
 ---
 
@@ -187,9 +187,9 @@ Aunque es propio de Vue se basa en los mismos principios básicos que se aplican
 
 ## Antecedentes de Vuex
 
-- **La arquitectura Elm** (2012): Elm es un lenguaje específico para clientes web que transpila a JS
-- **Flux** (2014): arquitectura propuesta por Facebook  para estructurar aplicaciones con su framework React
-- **Redux** (2015): la variante de Flux de mayor éxito, transportada luego a frameworks como Angular ([NgRedux](https://github.com/angular-redux/ng-redux))
+- **[La arquitectura Elm](https://guide.elm-lang.org/architecture/)** (2012): Elm es un lenguaje específico para clientes web que transpila a JS
+- **[Flux](https://facebook.github.io/flux/)** (2014): arquitectura propuesta por Facebook  para estructurar aplicaciones con su framework React
+- **[Redux](https://es.redux.js.org/)** (2015): la variante de Flux de mayor éxito, normalmente usada en React pero portada luego a frameworks como Angular o Vue
 
 ---
 
@@ -347,8 +347,7 @@ computed: {
 
 Como los cambios en el estado siempre se hacen con mutaciones, si hacemos un *log* de todas ellas, avanzando y retrocediendo por él podemos **reproducir el estado de la aplicación en cualquier momento**
 
-<!-- .element: class="stretch" -->
-![](https://raw.githubusercontent.com/vuejs/vue-devtools/master/media/demo.gif)
+![](https://raw.githubusercontent.com/vuejs/vue-devtools/master/media/demo.gif)<!-- .element: class="r-stretch" -->
 
 
 ---
