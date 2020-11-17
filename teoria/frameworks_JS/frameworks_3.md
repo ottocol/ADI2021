@@ -25,7 +25,19 @@ Se suelen distinguir dos tipos de reactividad:
 
 ---
 
+
+## Ejemplos de reactividad tipo "pull"
+
+- [Ejemplo de código "de juguete"](https://jsbin.com/cozigix/2/edit?html,js,console,output) 
+  - Para probarlo escribir en la consola `setState({contador:0}`. A partir de ahí se puede usar el botón (que llama a `setState`) 
+- [Ejemplo con el framework React](https://codepen.io/darylw/pen/vzKQNp?editors=0010) (podéis ver que la idea es la misma)
+
+
+---
+
 ## Reactividad tipo "pull" 
+
+Implementación _naive_ y muy simplificada
 
 ```javascript
 var update, state
@@ -46,12 +58,6 @@ onStateChanged(function () {
   var view = render(state)
 })
 ```
-
----
-
-[Ejemplo de código](https://jsbin.com/cozigix/2/edit?html,js,console,output) 
-
-Para probarlo escribir en la consola `setState({contador:0}`. A partir de ahí se puede usar el botón (que llama a`setState`) 
 
 
 ---
@@ -91,6 +97,10 @@ Object.keys(data).forEach(key => {
 total = data.price * data.quantity
 data.price = 20
 ```
+[Código en JSBin](https://jsbin.com/sakikiy/edit?js,console,output)<!-- .element class="caption" --> | 
+
+
+[Tomado de "Build a reactivity System", del curso "Vue Mastery"](https://www.vuemastery.com/courses/advanced-components/build-a-reactivity-system/) <!-- .element class="caption" -->
 
 ---
 
@@ -121,11 +131,10 @@ De manera muy simplificada:
 
 ## Reactividad tipo _push_ en Svelte 3
 
-- Svelte sigue un enfoque distinto, en lugar de hacer las cosas en *runtime*, es un **compilador** que genera "código reactivo"
+Svelte sigue un enfoque distinto, en lugar de hacer "la magia" en *runtime*, es un **compilador** que genera "código reactivo"
 
 [Demo de la charla "Rethinking reactivity de Rich Harris"](https://rethinking-reactivity.surge.sh/#slide=21)
 
-- Os recomiendo que veáis la [charla entera](https://www.youtube.com/watch?v=AdNJ3fydeao), es 🤯
 
 ---
 
@@ -193,8 +202,10 @@ ReactDOM.render(
 El ejemplo anterior puede parecer tedioso (¡y lo es!), pero usar JS para la función de *render* tiene la **ventaja** de que **podemos usar toda la expresividad de JS**
 
 ```javascript
+//Aclaración: nadie programa así en React, normalmente se usa un formato llamado JSX,
+//que permite poner las etiquetas en el JS y es mucho más legible
 function Ejemplo(props) {
-    var c = React.createElement
+    const c = React.createElement
     const children = []
     for(var i=0; i<5; i++) {
         children.push(c('p', {class:'text'},
@@ -237,6 +248,8 @@ Como hemos visto en los ejemplos, el desarrollador lo programa como si se repint
 Para verlo hay que abrir la consola de desarrolladores del navegador, ir a ver el código fuente en "tiempo real" (pestaña "Elements" en Chrome, "Inspector" en Firefox) y buscar el div con id="root". Pese a que en el código de la función de render se repinta el componente entero, en el navegador solo se está cambiando un nodo.
 
 ---
+
+## Vue y el Virtual DOM
 
 - Curiosamente, aunque Vue usa plantillas para describir el HTML de los componentes, estas internamente se comportan como funciones JS, de hecho podemos escribir la función render() si las plantillas "se nos quedan pequeñas"
 - Es por esto que Vue también usa un DOM virtual
