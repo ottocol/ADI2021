@@ -2,9 +2,15 @@
 
 El objetivo de esta práctica es adaptar la web de la práctica anterior a dispositivos móviles. Dependiendo de cómo hayas realizado la implementación podrás aprovechar más o menos directamente el código ya escrito. En general deberían valerte los mismos componentes aunque tendrás que reorganizarlos en pantalla y modificar su HTML y CSS.
 
-Se propone usar [Ionic](https://ionicframework.com/) como framework de desarrollo, ya que permite usar componentes Vue, Angular o React pero si lo preferís podéis usar cualquier otro framework para móviles, como [onsen UI](https://onsen.io/) o [Quasar](https://quasar.dev/) o  usar simplemente componentes especialmente adaptados para móviles como [Bootstrap Vue](https://bootstrap-vue.org/). Cualquier otro del mismo estilo también os vale
+Se propone usar [Ionic](https://ionicframework.com/) como framework de desarrollo, ya que permite usar componentes Vue, Angular o React pero si lo preferís podéis usar cualquier otro framework para móviles, como [onsen UI](https://onsen.io/) o [Quasar](https://quasar.dev/) o  usar simplemente componentes especialmente adaptados para móviles como [Bootstrap Vue](https://bootstrap-vue.org/). Cualquier otro del mismo estilo también os vale.
 
-> Antes de elegir un *framework* cualquiera echadle un vistazo a la popularidad de su repositorio de Github, la documentación disponible, la antigüedad de la última *release*, etc. Hay *frameworks* que ya no están mantenidos o bien que tienen poca documentación disponible, o solo en idiomas distintos del español o el inglés. 
+Para Ionic tenéis una amplia [documentación](https://ionicframework.com/docs), en concreto evidentemente. Podéis comenzar por:
+
+- [Vue Quickstart](https://ionicframework.com/docs/vue/quickstart), cómo instalar ionic y crear un proyecto tipo "Hola Vue".
+- [Your first Ionic App: Vue](https://ionicframework.com/docs/vue/your-first-app), un tutorial de cómo crear una _app_ para tomar fotos con la cámara del dispositivo y guardarlas en una galería propia.
+- [App lector _reddit_ con Vue+Ionic](https://www.youtube.com/watch?v=KTe7pyKELLo&t=138s) buen videotutorial en castellano, aunque de hace un año, y por ello no sigue el mismo proceso de desarrollo que los otros tutoriales (no usa el mismo CLI). También hay alguna cosilla que cambia con la versión actual, por ejemplo [mirad el primer comentario](https://www.youtube.com/watch?v=KTe7pyKELLo&lc=Ugz4goerWI_XECJ4weh4AaABAg). No obstante es interesante y lo podéis ver aunque no lo sigáis con vuestro código.
+
+> Antes de elegir un *framework* cualquiera, echadle un vistazo a la popularidad de su repositorio de Github, la documentación disponible, la antigüedad de la última *release*, etc. Hay *frameworks* que ya no están mantenidos o bien que tienen poca documentación disponible, o solo en idiomas distintos del español o el inglés. No es el caso de Ionic, ya que tiene detrás una amplia comunidad de desarrolladores y muchos recursos de aprendizaje.
 
 ## Requisitos mínimos
 
