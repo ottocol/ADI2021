@@ -9,15 +9,10 @@
 </head>
 <body>
     <h1>Demo de gestión de usuarios con Firebase</h1>
-    <div id="panel">
-      Estás autentificado como <span id="login_actual"></span>. 
-      <a href="javascript:logout()">Salir</a>
-    </div>
     Email: <input type="email" id="email"/> <br>
     Contraseña: <input type="password" id="password"> <br>
     <button id="boton_registrar">Registrarse</button>
-    <button id="boton_entrar">Entrar</button>
-    <p>Sé que es raro que el mismo formulario sirva para registrarse y entrar, pero es solo una demo...😊</p>
+    
 
     <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->     
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
@@ -37,15 +32,7 @@
         };
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
-        firebase.auth().onAuthStateChanged(function(user) {
-          if (user) {
-            document.getElementById('login_actual').innerText = user.email
-            document.getElementById('panel').style.display = 'block'
-          } 
-          else {
-            document.getElementById('panel').style.display = 'hidden'
-          }
-        });
+      
 
         document.getElementById('boton_registrar').addEventListener('click', async function(){
           var email = document.getElementById('email').value
@@ -58,24 +45,6 @@
             console.log("Error " + error.code + ": " + error.message)
           };
         })
-        document.getElementById('boton_entrar').addEventListener('click', async function(){
-          var email = document.getElementById('email').value
-          var password = document.getElementById('password').value
-          try {
-            var user = await firebase.auth().signInWithEmailAndPassword(email, password)
-            console.log(user)
-          }
-          catch(error) {
-            console.log("Error " + error.code + ": " + error.message)
-          };
-        })
-
-        
-
-        async function logout() {
-           await firebase.auth().signOut()
-           document.getElementById('panel').style.display = 'hidden'
-        }
     </script>
 </body>
 </html>
